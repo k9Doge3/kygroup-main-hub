@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { Toaster } from "@/components/ui/toaster"
+import { Providers } from "@/components/providers"
 
 import { Suspense } from "react"
 
@@ -27,10 +28,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable}`}>
       <body className="font-sans antialiased">
-        <Suspense fallback={null}>
-          {children}
-          <Toaster />
-        </Suspense>
+        <Providers>
+          <Suspense fallback={null}>
+            {children}
+            <Toaster />
+          </Suspense>
+        </Providers>
         <Analytics />
       </body>
     </html>

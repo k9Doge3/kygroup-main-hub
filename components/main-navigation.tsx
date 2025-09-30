@@ -3,8 +3,18 @@
 import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useSession, signIn, signOut } from "next-auth/react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { 
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import { 
   Home, 
   Briefcase, 
@@ -17,7 +27,11 @@ import {
   ArrowLeft, 
   Camera,
   Code2,
-  User
+  User,
+  LogIn,
+  LogOut,
+  Settings,
+  Shield
 } from "lucide-react"
 
 const navigation = [

@@ -26,6 +26,7 @@ import {
 import Link from "next/link"
 import { ProfilePhotoManager } from "@/components/profile-photo-manager"
 import { MainNavigation } from "@/components/main-navigation"
+import { GuestWelcome } from "@/components/guest-welcome"
 
 export default function HomePage() {
   return (
@@ -43,6 +44,11 @@ export default function HomePage() {
       <MainNavigation />
 
       <main className="relative z-10">
+        {/* Guest Welcome Banner */}
+        <div className="container mx-auto max-w-6xl px-4 pt-4">
+          <GuestWelcome />
+        </div>
+
         {/* Hero Section */}
         <section className="relative py-20 px-4">
           <div className="container mx-auto max-w-6xl">
