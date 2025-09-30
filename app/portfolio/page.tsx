@@ -8,6 +8,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Github, ExternalLink, Mail, Phone, MapPin, Calendar, Star, GitFork, Briefcase } from 'lucide-react'
 import { MainNavigation } from "@/components/main-navigation"
+import { StarField } from "@/components/star-field"
+import { EnhancedProfile } from "@/components/enhanced-profile"
+import { SocialLinks } from "@/components/social-links"
+import { ContactForm } from "@/components/contact-form"
+import { ChatbotModal } from "@/components/chatbot-modal"
 
 const portfolioData = {
   personal: {
@@ -121,7 +126,7 @@ export default function PortfolioPage() {
   const [activeTab, setActiveTab] = useState("overview")
 
   const ProjectCard = ({ project }: { project: typeof portfolioData.projects[0] }) => (
-    <Card className="group hover:shadow-lg transition-all duration-300 border-border/50 hover:border-border bg-slate-800/50 backdrop-blur-sm">
+    <Card className="bg-slate-800/60 backdrop-blur-sm border-slate-700/50 hover:border-purple-500/50 transition-all duration-300 group hover:shadow-lg">
       <CardHeader>
         <div className="flex items-start justify-between">
           <div className="flex-1">
@@ -131,7 +136,7 @@ export default function PortfolioPage() {
             <p className="text-sm text-slate-300 mt-2">{project.description}</p>
           </div>
           {project.featured && (
-            <Badge variant="secondary" className="ml-2 bg-purple-500/20 text-purple-300">Featured</Badge>
+            <Badge variant="secondary" className="ml-2 bg-purple-500/20 text-purple-300 border-slate-600">Featured</Badge>
           )}
         </div>
       </CardHeader>
@@ -180,36 +185,32 @@ export default function PortfolioPage() {
   )
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-900 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-900/20 via-slate-900/10 to-transparent"></div>
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-white rounded-full animate-pulse"></div>
-        <div className="absolute top-1/3 right-1/3 w-0.5 h-0.5 bg-blue-300 rounded-full animate-pulse delay-1000"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-1 h-1 bg-purple-300 rounded-full animate-pulse delay-500"></div>
-        <div className="absolute top-1/2 right-1/4 w-0.5 h-0.5 bg-white rounded-full animate-pulse delay-700"></div>
-        <div className="absolute bottom-1/3 right-1/2 w-1 h-1 bg-blue-200 rounded-full animate-pulse delay-300"></div>
-        <div className="absolute top-3/4 left-1/2 w-0.5 h-0.5 bg-purple-200 rounded-full animate-pulse delay-1200"></div>
-      </div>
-
+    <div className="min-h-screen bg-slate-900 text-slate-100 relative overflow-hidden">
+      <StarField />
       <MainNavigation />
-
-      <main className="container mx-auto py-8 px-4 relative z-10">
+      
+      <main className="relative z-10 container mx-auto px-4 py-16 space-y-8">
         <div className="max-w-6xl mx-auto space-y-8">
           {/* Header Section */}
           <div className="text-center mb-12">
             <div className="flex justify-center items-center gap-3 mb-6">
               <Star className="h-6 w-6 text-purple-400" />
-              <h1 className="text-4xl md:text-5xl font-bold text-white bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
+              <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
                 Portfolio
               </h1>
               <Star className="h-6 w-6 text-blue-400" />
             </div>
             
             <div className="flex justify-center mb-6">
-              <Avatar className="h-32 w-32 border-2 border-purple-500/50">
-                <AvatarImage src={portfolioData.personal.avatar} alt={portfolioData.personal.name} />
-                <AvatarFallback className="text-2xl bg-purple-600">{portfolioData.personal.name[0]}</AvatarFallback>
-              </Avatar>
+              <div className="relative inline-block">
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full blur-xl opacity-30 animate-pulse"></div>
+                <div className="relative bg-gradient-to-r from-purple-500 to-blue-500 rounded-full p-1">
+                  <Avatar className="h-32 w-32 bg-slate-900">
+                    <AvatarImage src={portfolioData.personal.avatar} alt={portfolioData.personal.name} />
+                    <AvatarFallback className="text-2xl bg-purple-600">{portfolioData.personal.name[0]}</AvatarFallback>
+                  </Avatar>
+                </div>
+              </div>
             </div>
             
             <h2 className="text-2xl font-bold mb-2 text-white">{portfolioData.personal.name}</h2>
@@ -254,7 +255,7 @@ export default function PortfolioPage() {
 
             <TabsContent value="overview" className="mt-8">
               <div className="grid md:grid-cols-2 gap-8">
-                <Card className="bg-slate-800/50 backdrop-blur-sm border-slate-700">
+                <Card className="bg-slate-800/60 backdrop-blur-sm border-slate-700/50 hover:border-purple-500/50 transition-all duration-300">
                   <CardHeader>
                     <CardTitle className="flex items-center space-x-2 text-white">
                       <Star className="h-5 w-5 text-purple-400" />
@@ -264,12 +265,12 @@ export default function PortfolioPage() {
                   <CardContent>
                     <div className="space-y-4">
                       {portfolioData.projects.filter(p => p.featured).slice(0, 3).map(project => (
-                        <div key={project.id} className="flex items-center justify-between p-3 rounded-lg border border-slate-700 bg-slate-800/30">
+                        <div key={project.id} className="flex items-center justify-between p-3 rounded-lg border border-slate-700/50 bg-slate-800/30 hover:bg-slate-700/30 transition-all duration-200">
                           <div>
                             <h4 className="font-medium text-white">{project.name}</h4>
                             <p className="text-sm text-slate-400">{project.tech.slice(0, 2).join(", ")}</p>
                           </div>
-                          <Button variant="ghost" size="sm" asChild className="hover:bg-slate-700">
+                          <Button variant="ghost" size="sm" asChild className="hover:bg-slate-600/50 text-slate-300 hover:text-white">
                             <a href={project.live} target="_blank" rel="noopener noreferrer">
                               <ExternalLink className="h-4 w-4" />
                             </a>
@@ -280,7 +281,7 @@ export default function PortfolioPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-slate-800/50 backdrop-blur-sm border-slate-700">
+                <Card className="bg-slate-800/60 backdrop-blur-sm border-slate-700/50 hover:border-purple-500/50 transition-all duration-300">
                   <CardHeader>
                     <CardTitle className="text-white">Quick Stats</CardTitle>
                   </CardHeader>
@@ -374,6 +375,26 @@ export default function PortfolioPage() {
             </TabsContent>
           </Tabs>
         </div>
+
+        {/* Contact Section */}
+        <section className="py-20 px-4">
+          <div className="container mx-auto max-w-5xl">
+            <div className="text-center space-y-6 mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-white">Let's Work Together</h2>
+              <p className="text-xl text-slate-300 text-pretty max-w-3xl mx-auto">
+                Interested in collaborating? Let's discuss your project and create something amazing together.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-12">
+              <SocialLinks layout="compact" showStats />
+              <ContactForm embedded compactMode />
+            </div>
+          </div>
+        </section>
+
+        {/* Chatbot Modal */}
+        <ChatbotModal />
       </main>
     </div>
   )

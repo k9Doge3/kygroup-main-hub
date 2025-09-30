@@ -26,6 +26,11 @@ import {
   Cloud
 } from 'lucide-react'
 import { MainNavigation } from "@/components/main-navigation"
+import { StarField } from "@/components/star-field"
+import { EnhancedProfile } from "@/components/enhanced-profile"
+import { SocialLinks } from "@/components/social-links"
+import { ContactForm } from "@/components/contact-form"
+import { ChatbotModal } from "@/components/chatbot-modal"
 
 const projectCategories = {
   all: "All Projects",
@@ -240,7 +245,7 @@ export default function ProjectsPage() {
     })
 
   const ProjectCard = ({ project }: { project: typeof projectData[0] }) => (
-    <Card className="group bg-slate-800/50 backdrop-blur-sm border-slate-700 hover:border-purple-500/50 transition-all duration-300 hover:transform hover:scale-[1.02]">
+    <Card className="bg-slate-800/60 backdrop-blur-sm border-slate-700/50 hover:border-purple-500/50 transition-all duration-300 group hover:shadow-lg hover:transform hover:scale-[1.02]">
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between">
           <div className="flex items-center space-x-3">
@@ -350,26 +355,17 @@ export default function ProjectsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-900 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-900/20 via-slate-900/10 to-transparent"></div>
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-white rounded-full animate-pulse"></div>
-        <div className="absolute top-1/3 right-1/3 w-0.5 h-0.5 bg-blue-300 rounded-full animate-pulse delay-1000"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-1 h-1 bg-purple-300 rounded-full animate-pulse delay-500"></div>
-        <div className="absolute top-1/2 right-1/4 w-0.5 h-0.5 bg-white rounded-full animate-pulse delay-700"></div>
-        <div className="absolute bottom-1/3 right-1/2 w-1 h-1 bg-blue-200 rounded-full animate-pulse delay-300"></div>
-        <div className="absolute top-3/4 left-1/2 w-0.5 h-0.5 bg-purple-200 rounded-full animate-pulse delay-1200"></div>
-      </div>
-
+    <div className="min-h-screen bg-slate-900 text-slate-100 relative overflow-hidden">
+      <StarField />
       <MainNavigation />
-
-      <main className="container mx-auto py-8 px-4 relative z-10">
+      
+      <main className="relative z-10 container mx-auto px-4 py-16 space-y-8">
         <div className="max-w-6xl mx-auto space-y-8">
           {/* Header */}
           <div className="text-center mb-12">
             <div className="flex justify-center items-center gap-3 mb-6">
               <Code className="h-6 w-6 text-purple-400" />
-              <h1 className="text-4xl md:text-5xl font-bold text-white bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
+              <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
                 My Projects
               </h1>
               <Rocket className="h-6 w-6 text-blue-400" />
@@ -458,6 +454,26 @@ export default function ProjectsPage() {
             </div>
           )}
         </div>
+
+        {/* Contact Section */}
+        <section className="py-20 px-4">
+          <div className="container mx-auto max-w-5xl">
+            <div className="text-center space-y-6 mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-white">Start Your Project</h2>
+              <p className="text-xl text-slate-300 text-pretty max-w-3xl mx-auto">
+                Have an idea you'd like to bring to life? Let's discuss how I can help make it happen.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-12">
+              <ContactForm embedded showProjectDetails />
+              <EnhancedProfile compact />
+            </div>
+          </div>
+        </section>
+
+        {/* Chatbot Modal */}
+        <ChatbotModal />
       </main>
     </div>
   )

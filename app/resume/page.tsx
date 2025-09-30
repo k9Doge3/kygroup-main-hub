@@ -25,6 +25,10 @@ import {
 } from 'lucide-react'
 import { MainNavigation } from "@/components/main-navigation"
 import { StarField } from "@/components/star-field"
+import { EnhancedProfile } from "@/components/enhanced-profile"
+import { SocialLinks } from "@/components/social-links"
+import { ContactForm } from "@/components/contact-form"
+import { ChatbotModal } from "@/components/chatbot-modal"
 
 export default function ResumePage() {
   return (
@@ -264,6 +268,26 @@ export default function ResumePage() {
             </div>
           </CardContent>
         </Card>
+
+        {/* Contact Section */}
+        <section className="py-20 px-4">
+          <div className="container mx-auto max-w-5xl">
+            <div className="text-center space-y-6 mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-white">Let's Connect</h2>
+              <p className="text-xl text-slate-300 text-pretty max-w-3xl mx-auto">
+                Interested in my background and experience? Let's discuss potential opportunities.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-12">
+              <SocialLinks layout="vertical" showStats />
+              <ContactForm embedded compactMode />
+            </div>
+          </div>
+        </section>
+
+        {/* Chatbot Modal */}
+        <ChatbotModal />
 
       </main>
     </div>

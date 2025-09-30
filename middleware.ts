@@ -20,7 +20,6 @@ export default withAuth(
           "/portfolio", 
           "/resume",
           "/projects",
-          "/gallery",
           "/api/auth",
           "/api/analytics"
         ]
