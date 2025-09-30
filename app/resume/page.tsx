@@ -370,18 +370,20 @@ export default function ResumePage() {
               {/* Timeline line */}
               <div className="absolute left-2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 via-blue-500 to-purple-500" />
               
-              {experience.map((job, index) => (
-                <ExperienceCard
-                  key={index}
-                  company={job.company}
-                  position={job.position}
-                  duration={job.duration}
-                  location={job.location}
-                  description={job.description}
-                  achievements={job.achievements}
-                  technologies={job.technologies}
-                  isLatest={index === 0}
-                />
+              {experience?.map((job, index) => (
+                job && job.position ? (
+                  <ExperienceCard
+                    key={job.id || index}
+                    company={job.company}
+                    position={job.position}
+                    duration={job.duration}
+                    location={job.location}
+                    description={job.description}
+                    achievements={job.achievements}
+                    technologies={job.technologies}
+                    isLatest={index === 0}
+                  />
+                ) : null
               ))}
             </div>
           </div>
