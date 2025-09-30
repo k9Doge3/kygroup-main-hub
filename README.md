@@ -1,23 +1,46 @@
-# Yandex Disk Website
+# 🚀 Yandex Blob Uploader - Modern Family Hub
 
-A dynamic website that uses Yandex Disk as the primary storage backend for all content management. This application allows you to create, edit, and serve website content directly from your Yandex Disk storage.
+A Next.js 14 application with dual authentication systems, family management features, file storage, and cloud integration. Perfect for personal use and family collaboration.
 
-## Features
+## 🌟 **Quick Start**
 
-### 🔐 Authentication
-- **Yandex ID Integration**: Official Yandex OAuth flow using the Yandex SDK
-- **Manual Token Support**: Alternative authentication method for advanced users
-- **Secure Token Storage**: HTTP-only cookies for enhanced security
+```bash
+# Clone the repository
+git clone https://github.com/k9Doge3/kygroup-main-hub.git
+cd kygroup-main-hub
 
-### 📁 File Management
-- **Browse Files**: Navigate through your Yandex Disk directory structure
-- **Upload Files**: Upload files directly to any folder in your Yandex Disk
-- **Real-time Updates**: Automatic refresh of file listings after operations
+# Install dependencies
+pnpm install
 
-### 📝 Content Management
-- **Visual Editor**: Edit text files, HTML, CSS, and JSON directly in the browser
-- **Image Support**: View and manage images stored on your Yandex Disk
-- **Create New Files**: Generate new content files with proper MIME type detection
+# Set up environment variables (see COLLABORATION_GUIDE.md)
+cp .env.example .env.local
+
+# Start development server
+pnpm dev
+```
+
+Visit `http://localhost:3000` to get started!
+
+## ✨ **Key Features**
+
+### 🔐 **Dual Authentication Systems**
+- **Supabase Auth**: Modern authentication with PostgreSQL backend
+- **NextAuth.js**: Traditional credentials-based authentication
+- **Guest Access**: Public file browsing without registration
+- **Google OAuth**: Social login integration ready
+
+### 👨‍👩‍👧‍� **Family Hub Features**
+- **Family Calendar**: Shared family scheduling and events
+- **File Management**: Secure family file storage and sharing
+- **Financial Dashboard**: Family expense tracking and budgeting
+- **Todo Lists**: Collaborative task management
+- **Profile Management**: Individual and family profiles
+
+### � **Advanced File Management**
+- **Yandex Disk Integration**: Cloud storage with OAuth authentication
+- **Real-time Updates**: Live file synchronization
+- **Multi-format Support**: Images, documents, media files
+- **Secure Upload/Download**: Protected file operations
 - **Live Preview**: Preview HTML content with proper rendering
 
 ### 🌐 Website Serving
