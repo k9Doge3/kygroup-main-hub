@@ -54,11 +54,12 @@ export default withAuth(
           return true
         }
 
-        // Protect dashboard, family, and admin routes - require authentication
+        // Protect dashboard, family, admin, and cloud storage routes - require authentication
         if (
           pathname.startsWith("/dashboard") ||
           pathname.startsWith("/family") ||
-          pathname.startsWith("/admin")
+          pathname.startsWith("/admin") ||
+          pathname.startsWith("/cloud-storage")
         ) {
           return !!token
         }

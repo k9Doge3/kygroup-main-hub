@@ -31,7 +31,8 @@ import {
   LogIn,
   LogOut,
   Settings,
-  Shield
+  Shield,
+  Cloud
 } from "lucide-react"
 
 const navigation = [
@@ -42,6 +43,7 @@ const navigation = [
   { name: "Resume", href: "/resume", icon: User },
   { name: "Subscribers Hub", href: "/family", icon: Users },
   { name: "File Manager", href: "/files", icon: FolderOpen },
+  { name: "Cloud Storage", href: "/cloud-storage", icon: Cloud },
 ]
 
 const familyNavigation = [
