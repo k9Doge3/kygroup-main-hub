@@ -44,6 +44,7 @@ const navigation = [
   { name: "Subscribers Hub", href: "/family", icon: Users },
   { name: "File Manager", href: "/files", icon: FolderOpen },
   { name: "Cloud Storage", href: "/cloud-storage", icon: Cloud },
+  { name: "Supabase Auth", href: "/auth/supabase", icon: Shield },
 ]
 
 const familyNavigation = [
